@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -15,7 +16,7 @@
             font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
             background: linear-gradient(135deg, #e2ede6 0%, #daedec 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
             overflow-x: hidden;
             touch-action: pan-y;
             -webkit-tap-highlight-color: transparent;
@@ -233,7 +234,7 @@
         }
 
         .content {
-            padding: 40px 30px;
+            padding: 30px 20px;
         }
 
         .question-page {
@@ -252,56 +253,92 @@
 
         h2 {
             color: #5f846f;
-            font-size: 24px;
+            font-size: 22px;
             margin-bottom: 10px;
             word-wrap: break-word;
+            line-height: 1.4;
         }
 
         .subtitle {
             color: #808080;
             font-size: 14px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            line-height: 1.5;
         }
 
         .option-group {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             max-width: 100%;
         }
 
         .option {
-            background: #faece8;
-            border: 2px solid transparent;
+            background: #fff5f5;
+            border: 2px solid #ffe8e8;
             border-radius: 12px;
-            padding: 16px 20px;
+            padding: 14px 16px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
             gap: 12px;
             max-width: 100%;
             word-wrap: break-word;
+            min-height: 52px;
+        }
+
+        .option:active {
+            transform: scale(0.98);
         }
 
         .option:hover {
-            background: #f2ac98;
-            transform: translateX(5px);
+            background: #ffeaea;
+            border-color: #ffd5d5;
+            transform: translateX(3px);
         }
 
         .option.selected {
-            background: #7ac19a;
-            border-color: #5f846f;
-            color: #ffffff;
+            background: linear-gradient(135deg, #c8e6d7 0%, #e8f5f0 100%);
+            border-color: #7ac19a;
+            color: #2d5a3d;
+            box-shadow: 0 4px 15px rgba(122, 193, 154, 0.5);
+            font-weight: 600;
+        }
+
+        .detail-input {
+            margin-top: 12px;
+            background: #fffafa !important;
+            border-color: #ffe8e8 !important;
+            font-size: 14px;
+            color: #4a6859;
+        }
+
+        .detail-input::placeholder {
+            color: #a89a9a;
+            opacity: 0.7;
+        }
+
+        .detail-input:focus {
+            border-color: #c0ddd0 !important;
+            box-shadow: 0 0 0 4px rgba(212, 235, 224, 0.15) !important;
+            background: #ffffff !important;
         }
 
         .option input[type="checkbox"],
         .option input[type="radio"] {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             cursor: pointer;
             flex-shrink: 0;
+            accent-color: #5f846f;
+        }
+
+        .option.selected input[type="checkbox"],
+        .option.selected input[type="radio"] {
+            accent-color: #2d5a3d;
+            filter: brightness(1);
         }
 
         .text-input {
@@ -318,6 +355,7 @@
         .text-input:focus {
             outline: none;
             border-color: #7ac19a;
+            box-shadow: 0 0 0 3px rgba(122, 193, 154, 0.1);
         }
 
         .text-input:disabled {
@@ -330,8 +368,8 @@
             color: #ffffff;
             border: none;
             border-radius: 12px;
-            padding: 16px 40px;
-            font-size: 18px;
+            padding: 15px 35px;
+            font-size: 17px;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
@@ -339,6 +377,7 @@
             -webkit-tap-highlight-color: transparent;
             position: relative;
             overflow: hidden;
+            min-height: 52px;
         }
 
         .button::before {
@@ -359,9 +398,8 @@
             height: 300px;
         }
 
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(122, 193, 154, 0.4);
+        .button:active {
+            transform: scale(0.98);
         }
 
         .button:disabled {
@@ -379,7 +417,7 @@
         .upload-area {
             border: 3px dashed #7ac19a;
             border-radius: 12px;
-            padding: 40px 20px;
+            padding: 35px 20px;
             text-align: center;
             transition: all 0.3s;
             margin-bottom: 20px;
@@ -391,6 +429,7 @@
             gap: 10px;
             justify-content: center;
             margin-top: 15px;
+            flex-wrap: wrap;
         }
 
         .upload-button {
@@ -402,9 +441,11 @@
             cursor: pointer;
             font-size: 14px;
             transition: all 0.2s;
+            min-height: 44px;
         }
 
-        .upload-button:hover {
+        .upload-button:active {
+            transform: scale(0.95);
             background: #5f846f;
         }
 
@@ -422,25 +463,38 @@
 
         .completion {
             text-align: center;
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
 
         .completion h1 {
             color: #7ac19a;
-            font-size: 32px;
+            font-size: 28px;
             margin-bottom: 20px;
         }
 
         .completion p {
             color: #5f846f;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 1.6;
         }
 
         .time-slot-input {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .time-slot-input input {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .time-slot-input button {
+            width: auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            min-width: 80px;
         }
 
         .time-slot-list {
@@ -453,11 +507,12 @@
         .time-slot-tag {
             background: #9fcccc;
             color: #ffffff;
-            padding: 8px 16px;
+            padding: 10px 16px;
             border-radius: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 14px;
         }
 
         .time-slot-tag button {
@@ -465,13 +520,23 @@
             border: none;
             color: #ffffff;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 20px;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .error-message {
             color: #c67566;
             font-size: 14px;
-            margin-top: 5px;
+            margin-top: 8px;
+            padding: 10px;
+            background: #fff5f5;
+            border-radius: 6px;
+            border-left: 3px solid #c67566;
         }
 
         .required {
@@ -496,7 +561,7 @@
         .analysis-result {
             background: #e2ede6;
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             margin: 20px 0;
         }
 
@@ -511,23 +576,24 @@
         .recommendation {
             background: #ffffff;
             border-radius: 8px;
-            padding: 20px;
+            padding: 18px;
             margin-top: 15px;
         }
 
         .recommendation h3 {
             color: #5f846f;
             margin-bottom: 10px;
+            font-size: 16px;
         }
 
         .canvas-container {
             position: relative;
             width: 100%;
-            max-width: 650px;
-            margin: 0 auto 35px;
+            max-width: 100%;
+            margin: 0 auto 30px;
             background: linear-gradient(145deg, #ffffff, #f8faf9);
-            border-radius: 25px;
-            padding: 25px;
+            border-radius: 20px;
+            padding: 20px;
             box-shadow: 
                 0 15px 40px rgba(95, 132, 111, 0.15),
                 inset 0 2px 10px rgba(255, 255, 255, 0.8);
@@ -536,7 +602,7 @@
 
         .canvas-wrapper {
             position: relative;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(95, 132, 111, 0.1);
         }
@@ -569,7 +635,7 @@
         .title-wrapper {
             display: inline-block;
             position: relative;
-            padding: 15px 30px;
+            padding: 12px 25px;
             background: linear-gradient(135deg, rgba(122, 193, 154, 0.1) 0%, rgba(159, 204, 204, 0.1) 100%);
             border-radius: 20px;
             border: 2px solid rgba(122, 193, 154, 0.3);
@@ -588,11 +654,11 @@
 
         .instruction-card {
             background: linear-gradient(135deg, #fcf4e3 0%, #fff9e6 100%);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 15px;
+            padding: 18px;
             border: 2px solid #ffe08b;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 25px rgba(186, 158, 96, 0.12);
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(186, 158, 96, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -600,60 +666,60 @@
         .instruction-card::before {
             content: '✦';
             position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 120px;
-            color: rgba(255, 224, 139, 0.15);
+            top: -15px;
+            right: -15px;
+            font-size: 80px;
+            color: rgba(255, 224, 139, 0.12);
             transform: rotate(15deg);
         }
 
         .instruction-header {
             display: flex;
             align-items: flex-start;
-            gap: 18px;
-            margin-bottom: 18px;
+            gap: 12px;
+            margin-bottom: 12px;
             position: relative;
             z-index: 1;
         }
 
         .instruction-icon {
-            font-size: 32px;
+            font-size: 24px;
             flex-shrink: 0;
             animation: bounce 2s ease-in-out infinite;
         }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-6px); }
         }
 
         .instruction-title {
             color: #5f846f;
             font-weight: 700;
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 16px;
+            margin-bottom: 6px;
         }
 
         .instruction-desc {
             color: #66888e;
-            font-size: 15px;
-            line-height: 1.7;
+            font-size: 13px;
+            line-height: 1.5;
         }
 
         .instruction-list {
             list-style: none;
             color: #5f846f;
-            font-size: 15px;
-            line-height: 2.2;
-            margin-left: 50px;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-left: 38px;
             position: relative;
             z-index: 1;
         }
 
         .instruction-list li {
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             position: relative;
-            padding-left: 30px;
+            padding-left: 20px;
         }
 
         .instruction-list li::before {
@@ -662,39 +728,14 @@
             left: 0;
             color: #7ac19a;
             font-weight: bold;
-            font-size: 18px;
-        }
-
-        .energy-flow {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(90deg, 
-                rgba(122, 193, 154, 0.1) 0%, 
-                rgba(159, 204, 204, 0.1) 50%, 
-                rgba(122, 193, 154, 0.1) 100%);
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border-left: 4px solid #7ac19a;
-            border-right: 4px solid #9fcccc;
-        }
-
-        .energy-flow-text {
-            color: #5f846f;
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 1.6;
-        }
-
-        .energy-flow-text strong {
-            color: #7ac19a;
-            font-size: 17px;
+            font-size: 14px;
         }
 
         .stats-section {
             background: linear-gradient(135deg, #e2ede6 0%, #d5e7dc 100%);
-            border-radius: 25px;
-            padding: 35px 30px;
-            margin-bottom: 30px;
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
             border: 2px solid #7ac19a;
             box-shadow: 0 8px 25px rgba(122, 193, 154, 0.12);
         }
@@ -702,13 +743,13 @@
         .stats-title {
             text-align: center;
             color: #5f846f;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 2px;
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 12px;
         }
 
         .stats-title::after {
@@ -726,13 +767,13 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 15px;
         }
 
         .stat-card {
             background: #ffffff;
-            border-radius: 18px;
-            padding: 30px 20px;
+            border-radius: 15px;
+            padding: 20px 15px;
             text-align: center;
             border: 2px solid transparent;
             transition: all 0.4s ease;
@@ -753,36 +794,34 @@
             transition: transform 0.4s ease;
         }
 
-        .stat-card:hover::before,
         .stat-card:active::before {
             transform: scaleX(1);
         }
 
-        .stat-card:hover,
         .stat-card:active {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(122, 193, 154, 0.25);
             border-color: #7ac19a;
         }
 
         .stat-icon {
-            font-size: 36px;
-            margin-bottom: 12px;
+            font-size: 30px;
+            margin-bottom: 10px;
             filter: drop-shadow(0 2px 4px rgba(95, 132, 111, 0.2));
         }
 
         .stat-label {
             color: #66888e;
-            font-size: 12px;
-            margin-bottom: 12px;
+            font-size: 11px;
+            margin-bottom: 10px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
         .stat-value {
             color: #7ac19a;
-            font-size: 38px;
+            font-size: 32px;
             font-weight: 800;
             line-height: 1;
             text-shadow: 0 2px 8px rgba(122, 193, 154, 0.2);
@@ -790,64 +829,79 @@
 
         .legend {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-            margin-bottom: 35px;
-            padding: 25px;
-            background: linear-gradient(135deg, #faece8 0%, #fdf0ec 100%);
-            border-radius: 18px;
-            border: 2px solid #f2ac98;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 25px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(250, 236, 232, 0.3) 0%, rgba(253, 240, 236, 0.3) 100%);
+            border-radius: 15px;
+            border: 2px solid rgba(242, 172, 152, 0.3);
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: #ffffff;
-            border-radius: 12px;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
 
         .legend-dot {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            box-shadow: 0 0 15px currentColor;
+            box-shadow: 0 0 8px currentColor;
             flex-shrink: 0;
+            opacity: 0.6;
         }
 
         .legend-text {
             color: #5f846f;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
+            opacity: 0.7;
         }
 
         .analysis-metrics {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin: 20px 0;
         }
 
         .metric-card {
             background: #ffffff;
-            border-radius: 8px;
-            padding: 15px;
+            border-radius: 12px;
+            padding: 20px 15px;
             text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(95, 132, 111, 0.1);
+        }
+
+        .metric-card:active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(122, 193, 154, 0.2);
+            border-color: #7ac19a;
         }
 
         .metric-value {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             color: #7ac19a;
             margin: 10px 0;
+            text-shadow: 0 2px 4px rgba(122, 193, 154, 0.2);
         }
 
         .metric-label {
             font-size: 13px;
-            color: #808080;
+            color: #66888e;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .editable-section {
@@ -862,7 +916,7 @@
         .editable-section h3 {
             color: #5f846f;
             margin-bottom: 15px;
-            font-size: 18px;
+            font-size: 17px;
         }
 
         .edit-button {
@@ -876,10 +930,12 @@
             border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
+            min-height: 36px;
         }
 
-        .edit-button:hover {
+        .edit-button:active {
             background: #5f846f;
+            transform: scale(0.95);
         }
 
         .edit-field {
@@ -890,7 +946,7 @@
             display: block;
             color: #5f846f;
             font-size: 14px;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-weight: 600;
         }
 
@@ -910,11 +966,12 @@
         .edit-field textarea:focus {
             outline: none;
             border-color: #7ac19a;
+            box-shadow: 0 0 0 3px rgba(122, 193, 154, 0.1);
         }
 
         .basic-info-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 15px;
             margin-bottom: 20px;
         }
@@ -984,13 +1041,318 @@
             border-bottom: none;
         }
 
-        .email-domain-item:hover {
+        .email-domain-item:active {
             background: #e2ede6;
         }
 
-        @media (max-width: 768px) {
+        /* 個人資料使用同意頁面樣式 */
+        .privacy-page {
+            padding: 20px 0;
+        }
+
+        .privacy-hero {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px 20px;
+            background: linear-gradient(135deg, #e2ede6 0%, #daedec 100%);
+            border-radius: 15px;
+            border: 2px solid #7ac19a;
+        }
+
+        .privacy-hero-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .privacy-hero h2 {
+            color: #5f846f;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .privacy-hero p {
+            color: #66888e;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .privacy-content {
+            background: #ffffff;
+            border: 2px solid #e2ede6;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 4px 15px rgba(95, 132, 111, 0.08);
+        }
+
+        .privacy-section {
+            margin-bottom: 25px;
+        }
+
+        .privacy-section-title {
+            color: #5f846f;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            padding-left: 15px;
+            border-left: 4px solid #7ac19a;
+        }
+
+        .privacy-text {
+            color: #66888e;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .privacy-list {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .privacy-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: #5f846f;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .privacy-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #7ac19a;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .privacy-agree-box {
+            background: linear-gradient(135deg, #fcf4e3 0%, #fff9e6 100%);
+            border: 2px solid #ffe08b;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .privacy-agree-box:hover {
+            box-shadow: 0 4px 15px rgba(255, 224, 139, 0.3);
+        }
+
+        .privacy-checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            cursor: pointer;
+        }
+
+        .privacy-checkbox-wrapper input[type="checkbox"] {
+            margin-top: 3px;
+            min-width: 24px;
+            min-height: 24px;
+            cursor: pointer;
+            accent-color: #7ac19a;
+        }
+
+        .privacy-checkbox-label {
+            color: #5f846f;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .privacy-note {
+            background: #e2ede6;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 4px solid #7ac19a;
+        }
+
+        .privacy-note p {
+            color: #5f846f;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 完成頁面新樣式 */
+        .completion-modern {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .completion-icon-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .completion-icon-bg {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(122, 193, 154, 0.3);
+            animation: success-pop 0.6s ease-out;
+        }
+
+        @keyframes success-pop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .completion-icon-bg::before {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 3px solid #7ac19a;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .completion-icon {
+            font-size: 60px;
+            color: #ffffff;
+        }
+
+        .completion-title {
+            color: #5f846f;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            animation: fade-in-up 0.6s ease-out 0.2s both;
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .completion-subtitle {
+            color: #66888e;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            animation: fade-in-up 0.6s ease-out 0.3s both;
+        }
+
+        .completion-info-cards {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 25px;
+            animation: fade-in-up 0.6s ease-out 0.4s both;
+        }
+
+        .completion-info-card {
+            background: linear-gradient(135deg, #e2ede6 0%, #daedec 100%);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid #7ac19a;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .completion-info-card:active {
+            transform: scale(0.98);
+        }
+
+        .completion-info-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .completion-info-title {
+            color: #5f846f;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .completion-info-text {
+            color: #66888e;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .completion-reminder {
+            background: #fcf4e3;
+            border: 2px solid #ffe08b;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+            animation: fade-in-up 0.6s ease-out 0.5s both;
+        }
+
+        .completion-reminder-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ba9e60;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .completion-reminder-text {
+            color: #66888e;
+            font-size: 13px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+                    @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
             .content {
-                padding: 30px 20px;
+                padding: 25px 18px;
             }
 
             h2 {
@@ -1002,25 +1364,22 @@
                 padding: 14px 30px;
             }
 
-            .basic-info-grid {
-                grid-template-columns: 1fr;
-            }
-
             .option {
-                padding: 14px 16px;
+                padding: 12px 14px;
+                font-size: 15px;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 12px;
+                gap: 10px;
             }
 
             .stat-card {
-                padding: 20px 10px;
+                padding: 15px 10px;
             }
 
             .stat-icon {
-                font-size: 28px;
+                font-size: 26px;
             }
 
             .stat-label {
@@ -1028,12 +1387,95 @@
             }
 
             .stat-value {
-                font-size: 28px;
+                font-size: 26px;
             }
 
             .instruction-list {
                 margin-left: 0;
-                padding-left: 20px;
+                padding-left: 15px;
+            }
+
+            .canvas-container {
+                padding: 15px;
+            }
+
+            .legend {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .analysis-metrics {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .metric-card {
+                padding: 18px 12px;
+            }
+
+            .metric-value {
+                font-size: 28px;
+            }
+
+            .metric-label {
+                font-size: 12px;
+            }
+
+            [data-page="3"] > div:first-of-type {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .privacy-hero-icon {
+                font-size: 40px;
+            }
+
+            .privacy-hero h2 {
+                font-size: 20px;
+            }
+
+            .privacy-content {
+                padding: 20px;
+            }
+
+            .completion-icon-bg {
+                width: 100px;
+                height: 100px;
+            }
+
+            .completion-icon {
+                font-size: 50px;
+            }
+
+            .completion-title {
+                font-size: 22px;
+            }
+
+            .completion-info-icon {
+                font-size: 28px;
+            }
+
+            /* 手機版生日欄位加大 */
+            #birthdayYear,
+            #birthdayMonth,
+            #birthdayDay {
+                font-size: 16px !important;
+                padding: 14px 12px !important;
+                min-height: 50px !important;
+            }
+
+            /* 手機版場館規範內容加寬 */
+            #venueRules {
+                padding: 15px !important;
+                font-size: 14px !important;
+            }
+
+            #venueRules h3 {
+                font-size: 16px !important;
+            }
+
+            #venueRules > div > div > div {
+                padding: 12px !important;
+                font-size: 13px !important;
             }
         }
     </style>
@@ -1107,8 +1549,9 @@
             <!-- Q3: 疾病史 -->
             <div class="question-page" data-page="3">
                 <h2>疾病史 <span class="required">*必填</span></h2>
-                <p class="subtitle">請勾選所有適用的選項</p>
-                <div class="option-group">
+                <p class="subtitle">請選擇所有與您健康史相關的疾病項目</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px;">
                     <label class="option">
                         <input type="checkbox" name="disease" value="心臟病">
                         <span>心臟病</span>
@@ -1173,26 +1616,29 @@
                         <input type="checkbox" name="disease" value="痛風/風濕">
                         <span>痛風/風濕</span>
                     </label>
+                </div>
+
+                <div class="option-group">
                     <label class="option" style="flex-direction: column; align-items: flex-start;">
                         <div style="display: flex; align-items: center; gap: 12px; width: 100%;">
                             <input type="checkbox" name="disease" value="關節問題" id="jointIssue">
                             <span>關節問題</span>
                         </div>
-                        <input type="text" class="text-input" id="jointDetail" placeholder="請說明關節問題詳情" style="display: none; width: 100%;">
+                        <input type="text" class="text-input detail-input" id="jointDetail" placeholder="例如:右膝關節疼痛3個月" style="display: none; width: 100%;">
                     </label>
                     <label class="option" style="flex-direction: column; align-items: flex-start;">
                         <div style="display: flex; align-items: center; gap: 12px; width: 100%;">
                             <input type="checkbox" name="disease" value="脊椎問題" id="spineIssue">
                             <span>脊椎問題</span>
                         </div>
-                        <input type="text" class="text-input" id="spineDetail" placeholder="請說明脊椎問題詳情" style="display: none; width: 100%;">
+                        <input type="text" class="text-input detail-input" id="spineDetail" placeholder="例如:腰椎輕微突出" style="display: none; width: 100%;">
                     </label>
                     <label class="option" style="flex-direction: column; align-items: flex-start;">
                         <div style="display: flex; align-items: center; gap: 12px; width: 100%;">
                             <input type="checkbox" name="disease" value="其他" id="otherDisease">
                             <span>其他</span>
                         </div>
-                        <input type="text" class="text-input" id="otherDetail" placeholder="請說明其他疾病" style="display: none; width: 100%;">
+                        <input type="text" class="text-input detail-input" id="otherDetail" placeholder="例如:偏頭痛、鼻炎等" style="display: none; width: 100%;">
                     </label>
                     <label class="option">
                         <input type="checkbox" name="disease" value="無" id="noDisease">
@@ -1223,7 +1669,7 @@
                 <p class="subtitle">請拍攝<strong style="color: #c67566;">背面</strong>全身照，線上免費檢測您的體態 AI分析評估報告</p>
                 <div style="background: #fcf4e3; border-radius: 8px; padding: 12px; margin-bottom: 15px;">
                     <p style="color: #ba9e60; font-size: 13px; line-height: 1.5;">
-                        💡 拍攝建議：請站直，雙腳與肩同寬,拍攝完整的背面全身照（從頭到腳）
+                        💡 拍攝建議:請站直，雙腳與肩同寬,拍攝完整的背面全身照（從頭到腳）
                     </p>
                 </div>
                 <div class="upload-area" id="uploadArea">
@@ -1249,55 +1695,66 @@
             </div>
 
             <!-- Q6: 個資同意書 -->
-            <div class="question-page" data-page="6">
-                <h2>個人資料使用同意</h2>
-                <div style="background: #ffffff; border: 2px solid #e2ede6; border-radius: 12px; padding: 20px; margin-bottom: 20px; max-height: 400px; overflow-y: auto;">
-                    <p>依據個人資料保護法規定,本公司將妥善保管您所提供的個人資料,並僅用於健身課程安排、聯繫通知及服務改善等目的。</p>
-                    <br>
-                    <p><strong>蒐集目的:</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>課程諮詢與安排</li>
-                        <li>會員服務與管理</li>
-                        <li>行銷活動通知</li>
-                    </ul>
-                    <br>
-                    <p><strong>您的權利:</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>查詢或請求閱覽</li>
-                        <li>請求製給複製本</li>
-                        <li>請求補充或更正</li>
-                        <li>請求停止蒐集、處理或利用</li>
-                        <li>請求刪除</li>
-                    </ul>
+            <div class="question-page privacy-page" data-page="6">
+                <div class="privacy-hero">
+                    <div class="privacy-hero-icon">🔒</div>
+                    <h2>個人資料使用同意</h2>
+                    <p>我們重視您的隱私權益<br>請詳閱以下條款並同意後繼續</p>
                 </div>
-                <label style="display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: #fcf4e3; border-radius: 8px; cursor: pointer; margin-bottom: 20px;">
-                    <input type="checkbox" id="agreePrivacy" style="margin-top: 3px;">
-                    <span>我已閱讀並同意個人資料使用條款</span>
-                </label>
+
+                <div class="privacy-content" style="max-height: none; overflow-y: visible;">
+                    <div class="privacy-section">
+                        <div class="privacy-section-title">蒐集目的</div>
+                        <p class="privacy-text">依據個人資料保護法規定，本公司將妥善保管您所提供的個人資料，並僅用於以下目的：</p>
+                        <ul class="privacy-list">
+                            <li>課程諮詢與安排</li>
+                            <li>會員服務與管理</li>
+                            <li>行銷活動通知</li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy-section">
+                        <div class="privacy-section-title">您的權利</div>
+                        <p class="privacy-text">您對於個人資料享有以下權利：</p>
+                        <ul class="privacy-list">
+                            <li>查詢或請求閱覽</li>
+                            <li>請求製給複製本</li>
+                            <li>請求補充或更正</li>
+                            <li>請求停止蒐集、處理或利用</li>
+                            <li>請求刪除</li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy-note">
+                        <p><strong>📌 重要提醒</strong><br>
+                        若您不同意提供個人資料，可能影響我們為您提供完整的服務。您可隨時聯繫我們行使上述權利。</p>
+                    </div>
+                </div>
+
+                <div class="privacy-agree-box">
+                    <label class="privacy-checkbox-wrapper">
+                        <input type="checkbox" id="agreePrivacy">
+                        <span class="privacy-checkbox-label">我已詳細閱讀並同意個人資料使用條款，瞭解本人享有的權利</span>
+                    </label>
+                </div>
+
                 <div class="nav-buttons">
                     <button class="button secondary" onclick="prevPage()">上一步</button>
-                    <button class="button" onclick="proceedAfterPrivacy()">下一步</button>
+                    <button class="button" onclick="proceedAfterPrivacy()">同意並繼續</button>
                 </div>
             </div>
 
             <!-- Q6.5: AI分析中 -->
             <div class="question-page" data-page="6.5">
-                <div style="text-align: center; margin-bottom: 25px;">
+                <div style="text-align: center; margin-bottom: 20px;">
                     <div class="title-wrapper" style="display: inline-block;">
-                        <h2 style="margin: 0; display: flex; align-items: center; justify-content: center; gap: 12px;">
+                        <h2 style="margin: 0; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 20px;">
                             <span class="star-icon">✦</span>
                             AI 體態分析系統
                             <span class="star-icon">✦</span>
                         </h2>
                     </div>
-                    <p class="subtitle" style="margin-top: 10px;">六芒星能量網格 · 全方位精準評估</p>
-                </div>
-                
-                <div class="energy-flow">
-                    <p class="energy-flow-text">
-                        <strong>⚡ 能量網格運行中</strong><br>
-                        六芒星結構已形成 · 所有關鍵點完美連接 · 準備進行深度分析
-                    </p>
+                    <p style="color: #7ac19a; font-size: 14px; margin-top: 8px; font-weight: 600;">⚡ 能量網格運行中</p>
                 </div>
                 
                 <div class="canvas-container">
@@ -1311,15 +1768,14 @@
                     <div class="instruction-header">
                         <span class="instruction-icon">💎</span>
                         <div style="flex: 1;">
-                            <p class="instruction-title">六芒星能量系統</p>
-                            <p class="instruction-desc">系統採用六芒星能量網格技術，形成完整的三角連接結構，確保每個關鍵點都能精準定位</p>
+                            <p class="instruction-title">體態分析系統</p>
+                            <p class="instruction-desc">透過精準定位技術，分析您的體態狀況</p>
                         </div>
                     </div>
                     <ul class="instruction-list">
-                        <li>點擊任意彩色圓點進行選取（手機會震動）</li>
+                        <li>點擊任意彩色圓點進行選取</li>
                         <li>拖動節點即時調整關鍵點位置</li>
-                        <li>能量網格自動重新計算平衡狀態</li>
-                        <li>點擊「重新定位」進行智能偵測</li>
+                        <li>系統自動重新計算平衡狀態</li>
                         <li>確認位置無誤後開始體態計算</li>
                     </ul>
                 </div>
@@ -1327,20 +1783,20 @@
                 <div class="legend">
                     <div class="legend-item">
                         <div class="legend-dot" style="background: #ff6b9d;"></div>
-                        <span class="legend-text">頭部</span>
+                        <span class="legend-text">頭部定位點</span>
                     </div>
                     <div class="legend-item">
                         <div class="legend-dot" style="background: #4facfe;"></div>
-                        <span class="legend-text">肩部</span>
+                        <span class="legend-text">肩部定位點</span>
                     </div>
                     <div class="legend-item">
                         <div class="legend-dot" style="background: #ffa647;"></div>
-                        <span class="legend-text">足部</span>
+                        <span class="legend-text">足部定位點</span>
                     </div>
                 </div>
 
                 <div class="stats-section">
-                    <h3 class="stats-title">網格系統數據</h3>
+                    <h3 class="stats-title">系統數據</h3>
                     <div class="stats-grid">
                         <div class="stat-card">
                             <div class="stat-icon">⬢</div>
@@ -1349,18 +1805,18 @@
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon">⬡</div>
-                            <div class="stat-label">能量連線</div>
+                            <div class="stat-label">連線數量</div>
                             <div class="stat-value" id="edgeCount">10</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon">✦</div>
-                            <div class="stat-label">網格完整度</div>
+                            <div class="stat-label">完整度</div>
                             <div class="stat-value">100%</div>
                         </div>
                     </div>
                 </div>
 
-                <button class="button secondary" onclick="autoAdjustKeypoints()">
+                <button class="button secondary" onclick="autoAdjustKeypoints()" style="margin-bottom: 15px;">
                     <span>🔄 智能重新定位</span>
                 </button>
                 <button class="button" onclick="calculatePosture()">
@@ -1425,7 +1881,7 @@
                     
                     <div class="edit-field full-width">
                         <label>生日 <span class="required">*</span></label>
-                        <div style="display: flex; gap: 10px;">
+                        <div style="display: flex; gap: 8px;">
                             <select id="birthdayYear" class="text-input" style="flex: 1;">
                                 <option value="">年</option>
                             </select>
@@ -1439,7 +1895,7 @@
                         <input type="date" id="birthday" style="display: none;">
                     </div>
                     
-                    <div class="edit-field">
+                    <div class="edit-field full-width">
                         <label>性別 <span class="required">*</span></label>
                         <div style="display: flex; gap: 10px;">
                             <label class="option" style="flex: 1; margin: 0;">
@@ -1522,7 +1978,7 @@
                 <div class="time-slot-input">
                     <input type="date" class="text-input" id="slotDate" min="" style="flex: 1;">
                     <input type="text" class="text-input" id="slotTime" placeholder="例:14:00" style="flex: 1;">
-                    <button class="button" onclick="addTimeSlot()" style="width: auto; padding: 12px 20px; font-size: 16px;">新增</button>
+                    <button class="button" onclick="addTimeSlot()">新增</button>
                 </div>
                 <div style="background: #fcf4e3; border-radius: 8px; padding: 12px; margin-top: 10px; margin-bottom: 15px;">
                     <p style="color: #ba9e60; font-size: 13px; line-height: 1.5;">
@@ -1620,10 +2076,10 @@
                         <div id="edit_diseases_container" style="display: none;">
                             <div style="background: #fcf4e3; border-radius: 8px; padding: 12px; margin-bottom: 10px;">
                                 <p style="color: #ba9e60; font-size: 13px; margin: 0;">
-                                    💡 使用 Ctrl (Windows) 或 Command (Mac) + 點擊可複選多個項目
+                                    💡 點擊下方選項進行選擇
                                 </p>
                             </div>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
                                 <label class="option" style="margin: 0;">
                                     <input type="checkbox" id="edit_disease_heart" value="心臟病">
                                     <span>心臟病</span>
@@ -1700,27 +2156,27 @@
                                 </p>
                             </div>
                             
-                            <div style="display: grid; gap: 12px;">
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <label class="option" style="flex: 0 0 140px; margin: 0;">
+                            <div style="display: grid; gap: 10px;">
+                                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                    <label class="option" style="flex: 0 0 auto; margin: 0; min-width: 120px;">
                                         <input type="checkbox" id="edit_disease_joint" value="關節問題">
                                         <span>關節問題</span>
                                     </label>
-                                    <input type="text" id="edit_joint_detail" class="text-input" placeholder="請說明關節問題詳情" style="flex: 1; margin: 0;">
+                                    <input type="text" id="edit_joint_detail" class="text-input" placeholder="請說明關節問題詳情" style="flex: 1; margin: 0; min-width: 200px;">
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <label class="option" style="flex: 0 0 140px; margin: 0;">
+                                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                    <label class="option" style="flex: 0 0 auto; margin: 0; min-width: 120px;">
                                         <input type="checkbox" id="edit_disease_spine" value="脊椎問題">
                                         <span>脊椎問題</span>
                                     </label>
-                                    <input type="text" id="edit_spine_detail" class="text-input" placeholder="請說明脊椎問題詳情" style="flex: 1; margin: 0;">
+                                    <input type="text" id="edit_spine_detail" class="text-input" placeholder="請說明脊椎問題詳情" style="flex: 1; margin: 0; min-width: 200px;">
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <label class="option" style="flex: 0 0 140px; margin: 0;">
+                                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                    <label class="option" style="flex: 0 0 auto; margin: 0; min-width: 120px;">
                                         <input type="checkbox" id="edit_disease_other" value="其他">
                                         <span>其他</span>
                                     </label>
-                                    <input type="text" id="edit_other_detail" class="text-input" placeholder="請說明其他疾病" style="flex: 1; margin: 0;">
+                                    <input type="text" id="edit_other_detail" class="text-input" placeholder="請說明其他疾病" style="flex: 1; margin: 0; min-width: 200px;">
                                 </div>
                             </div>
                         </div>
@@ -1763,12 +2219,12 @@
             <div class="question-page" data-page="12">
                 <h2>場館規範同意書</h2>
                 <p class="subtitle">請詳閱場館規範並同意後才能完成預約</p>
-                <div style="background: #ffffff; border: 2px solid #e2ede6; border-radius: 12px; padding: 20px; margin-bottom: 20px; max-height: 400px; overflow-y: auto;" id="venueRules">
+                <div style="background: #ffffff; border: 2px solid #ffe8e8; border-radius: 12px; padding: 20px; margin-bottom: 20px; max-height: 500px; overflow-y: auto;" id="venueRules">
                     載入中...
                 </div>
                 <label style="display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: #f5f5f5; border-radius: 8px; cursor: not-allowed; margin-bottom: 20px; opacity: 0.6;" id="agreeRulesLabel">
-                    <input type="checkbox" id="agreeRules" style="margin-top: 3px;" disabled>
-                    <span>我已詳閱並同意遵守以上場館規範（請先閱讀完整內容）</span>
+                    <input type="checkbox" id="agreeRules" style="margin-top: 3px; min-width: 20px; min-height: 20px; accent-color: #2d5a3d;" disabled>
+                    <span>我已詳閱並同意遵守以上場館規範</span>
                 </label>
                 <div id="rulesError" class="error-message" style="display: none;">請勾選同意場館規範</div>
                 <div class="nav-buttons">
@@ -1779,27 +2235,47 @@
 
             <!-- 完成頁面 -->
             <div class="question-page" data-page="13">
-                <div class="completion">
-                    <div style="font-size: 72px; margin-bottom: 20px;">✨</div>
-                    <h1>感謝您的填寫！</h1>
-                    <p style="margin-top: 20px;">我們已收到您的資料，將安排專業人員盡快與您聯繫！</p>
-                    <div style="background: linear-gradient(135deg, #e2ede6 0%, #daedec 100%); border-radius: 15px; padding: 25px; margin-top: 30px; border: 2px solid #7ac19a;">
-                        <p style="color: #5f846f; font-size: 16px; line-height: 1.8; margin: 0;">
-                            📧 請留意您的<strong>電子信箱</strong><br>
-                            💬 以及 <strong>LINE 訊息</strong><br>
-                            <br>
-                            我們會儘速為您安排體驗課程
-                        </p>
+                <div class="completion-modern">
+                    <div class="completion-icon-wrapper">
+                        <div class="completion-icon-bg">
+                            <div class="completion-icon">✓</div>
+                        </div>
                     </div>
-                    <div style="margin-top: 30px; padding: 20px; background: #fcf4e3; border-radius: 12px; border-left: 4px solid #7ac19a;">
-                        <p style="color: #ba9e60; font-size: 14px; line-height: 1.6; margin: 0;">
-                            💡 <strong>小提醒：</strong>若長時間未收到回覆，請檢查垃圾郵件匣，或直接聯繫我們的客服團隊。
+
+                    <h1 class="completion-title">提交成功！</h1>
+                    <p class="completion-subtitle">感謝您完成問卷填寫<br>我們已收到您的資料</p>
+
+                    <div class="completion-info-cards">
+                        <div class="completion-info-card">
+                            <div class="completion-info-icon">📧</div>
+                            <div class="completion-info-title">電子信箱通知</div>
+                            <div class="completion-info-text">請留意您的信箱<br>我們將寄送確認信件</div>
+                        </div>
+
+                        <div class="completion-info-card">
+                            <div class="completion-info-icon">💬</div>
+                            <div class="completion-info-title">LINE 訊息聯繫</div>
+                            <div class="completion-info-text">專業顧問將透過 LINE<br>與您確認體驗時間</div>
+                        </div>
+                    </div>
+
+                    <div class="completion-reminder">
+                        <div class="completion-reminder-title">
+                            <span>💡</span>
+                            <span>溫馨提醒</span>
+                        </div>
+                        <p class="completion-reminder-text">
+                            • 若長時間未收到回覆，請檢查垃圾郵件匣<br>
+                            • 如有任何問題，歡迎直接聯繫我們的客服團隊<br>
+                            • 我們將在 1-2 個工作天內與您聯繫
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <input type="hidden" id="lineId" value="">
 
     <script>
         let currentPage = 1;
@@ -1827,8 +2303,208 @@
             { id: 'rightFoot', label: '右腳', x: 0.55, y: 0.95, color: '#ffa647' }
         ];
 
-        document.addEventListener('DOMContentLoaded', function() {
+        function getLineIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lineId = urlParams.get('lineId') || urlParams.get('lineid') || urlParams.get('line_id') || '';
+            document.getElementById('lineId').value = lineId;
+            formData.lineId = lineId;
+            return lineId;
+        }
+
+        function saveFormDataToStorage() {
+            try {
+                const dataToSave = {
+                    ...formData,
+                    currentPage: currentPage,
+                    timeSlots: timeSlots,
+                    timestamp: new Date().toISOString()
+                };
+                localStorage.setItem('fitnessFormData', JSON.stringify(dataToSave));
+            } catch (e) {
+                console.error('無法儲存資料:', e);
+            }
+        }
+
+        function loadFormDataFromStorage() {
+            try {
+                const savedData = localStorage.getItem('fitnessFormData');
+                if (savedData) {
+                    const parsed = JSON.parse(savedData);
+                    const savedTime = new Date(parsed.timestamp);
+                    const now = new Date();
+                    const hoursDiff = (now - savedTime) / (1000 * 60 * 60);
+                    
+                    if (hoursDiff < 24) {
+                        if (confirm('偵測到您有未完成的問卷，是否要繼續填寫？')) {
+                            formData = parsed;
+                            timeSlots = parsed.timeSlots || [];
+                            currentPage = parsed.currentPage || 1;
+                            restoreFormState();
+                            return true;
+                        } else {
+                            localStorage.removeItem('fitnessFormData');
+                        }
+                    } else {
+                        localStorage.removeItem('fitnessFormData');
+                    }
+                }
+            } catch (e) {
+                console.error('無法載入資料:', e);
+            }
+            return false;
+        }
+
+        function restoreFormState() {
+            if (formData.goals) {
+                formData.goals.forEach(goal => {
+                    const checkbox = document.querySelector(`input[name="goal"][value="${goal}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        checkbox.closest('.option').classList.add('selected');
+                    }
+                });
+            }
+            
+            if (formData.courses) {
+                formData.courses.forEach(course => {
+                    const checkbox = document.querySelector(`input[name="course"][value="${course}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        checkbox.closest('.option').classList.add('selected');
+                    }
+                });
+            }
+            
+            if (formData.diseases) {
+                formData.diseases.forEach(disease => {
+                    if (disease.includes(':')) {
+                        const parts = disease.split(':');
+                        const diseaseName = parts[0].trim();
+                        const diseaseDetail = parts[1].trim();
+                        
+                        if (diseaseName === '關節問題') {
+                            const checkbox = document.getElementById('jointIssue');
+                            if (checkbox) {
+                                checkbox.checked = true;
+                                checkbox.closest('.option').classList.add('selected');
+                                const detailInput = document.getElementById('jointDetail');
+                                detailInput.style.display = 'block';
+                                detailInput.value = diseaseDetail;
+                            }
+                        } else if (diseaseName === '脊椎問題') {
+                            const checkbox = document.getElementById('spineIssue');
+                            if (checkbox) {
+                                checkbox.checked = true;
+                                checkbox.closest('.option').classList.add('selected');
+                                const detailInput = document.getElementById('spineDetail');
+                                detailInput.style.display = 'block';
+                                detailInput.value = diseaseDetail;
+                            }
+                        } else if (diseaseName === '其他') {
+                            const checkbox = document.getElementById('otherDisease');
+                            if (checkbox) {
+                                checkbox.checked = true;
+                                checkbox.closest('.option').classList.add('selected');
+                                const detailInput = document.getElementById('otherDetail');
+                                detailInput.style.display = 'block';
+                                detailInput.value = diseaseDetail;
+                            }
+                        }
+                    } else {
+                        const checkbox = document.querySelector(`input[name="disease"][value="${disease}"]`);
+                        if (checkbox) {
+                            checkbox.checked = true;
+                            checkbox.closest('.option').classList.add('selected');
+                        }
+                    }
+                });
+            }
+            
+            if (formData.remarks) {
+                document.getElementById('remarks').value = formData.remarks;
+            }
+            
+            if (formData.photo) {
+                uploadedImage = formData.photo;
+                const preview = document.getElementById('previewImage');
+                const uploadText = document.getElementById('uploadText');
+                preview.src = uploadedImage;
+                preview.style.display = 'block';
+                uploadText.style.display = 'none';
+                document.getElementById('uploadArea').classList.add('has-image');
+            }
+            
+            if (formData.name) document.getElementById('name').value = formData.name;
+            if (formData.birthday) {
+                const birthdayParts = formData.birthday.split('-');
+                if (birthdayParts.length === 3) {
+                    document.getElementById('birthdayYear').value = birthdayParts[0];
+                    document.getElementById('birthdayMonth').value = birthdayParts[1];
+                    updateDayOptions();
+                    document.getElementById('birthdayDay').value = birthdayParts[2];
+                    document.getElementById('birthday').value = formData.birthday;
+                }
+            }
+            if (formData.gender) {
+                const genderRadio = document.querySelector(`input[name="genderSelect"][value="${formData.gender}"]`);
+                if (genderRadio) {
+                    genderRadio.checked = true;
+                    genderRadio.closest('.option').classList.add('selected');
+                }
+            }
+            if (formData.email) document.getElementById('email').value = formData.email;
+            if (formData.phone) document.getElementById('phone').value = formData.phone;
+            
+            if (formData.timePreferences) {
+                formData.timePreferences.forEach(tp => {
+                    if (tp.slot === '平日白天') {
+                        document.getElementById('weekdayDay').checked = true;
+                        document.getElementById('weekdayDay').closest('.option').classList.add('selected');
+                        document.getElementById('weekdayDayTime').style.display = 'block';
+                        document.getElementById('weekdayDayTime').value = tp.time;
+                    } else if (tp.slot === '平日晚上(尖峰)') {
+                        document.getElementById('weekdayNight').checked = true;
+                        document.getElementById('weekdayNight').closest('.option').classList.add('selected');
+                        document.getElementById('weekdayNightTime').style.display = 'block';
+                        document.getElementById('weekdayNightTime').value = tp.time;
+                    } else if (tp.slot === '假日白天(尖峰)') {
+                        document.getElementById('weekendDay').checked = true;
+                        document.getElementById('weekendDay').closest('.option').classList.add('selected');
+                        document.getElementById('weekendDayTime').style.display = 'block';
+                        document.getElementById('weekendDayTime').value = tp.time;
+                    } else if (tp.slot === '假日晚上') {
+                        document.getElementById('weekendNight').checked = true;
+                        document.getElementById('weekendNight').closest('.option').classList.add('selected');
+                        document.getElementById('weekendNightTime').style.display = 'block';
+                        document.getElementById('weekendNightTime').value = tp.time;
+                    } else if (tp.slot === '彈性不固定') {
+                        const flexCheckbox = document.querySelector('input[name="timeSlot"][value="彈性不固定"]');
+                        if (flexCheckbox) {
+                            flexCheckbox.checked = true;
+                            flexCheckbox.closest('.option').classList.add('selected');
+                        }
+                    }
+                });
+            }
+            
+            if (timeSlots.length > 0) {
+                renderTimeSlots();
+            }
+            
+            document.querySelectorAll('.question-page').forEach(page => page.classList.remove('active'));
+            const targetPage = document.querySelector(`[data-page="${currentPage}"]`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
             updateProgress();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            getLineIdFromUrl();
+            const restored = loadFormDataFromStorage();
+            if (!restored) {
+                updateProgress();
+            }
             initializeDateInputs();
             initializeDiseaseCheckboxes();
             initializeTimeSlotCheckboxes();
@@ -1943,7 +2619,10 @@
                     document.querySelectorAll('input[name="disease"]').forEach(cb => {
                         if (cb !== noDiseaseCheckbox) {
                             cb.checked = false;
-                            cb.parentElement.classList.remove('selected');
+                            const parentOption = cb.closest('.option');
+                            if (parentOption) {
+                                parentOption.classList.remove('selected');
+                            }
                         }
                     });
                     jointDetail.style.display = 'none';
@@ -1963,7 +2642,10 @@
                     cb.addEventListener('change', function() {
                         if (this.checked) {
                             noDiseaseCheckbox.checked = false;
-                            noDiseaseCheckbox.parentElement.classList.remove('selected');
+                            const noDiseaseOption = noDiseaseCheckbox.closest('.option');
+                            if (noDiseaseOption) {
+                                noDiseaseOption.classList.remove('selected');
+                            }
                         }
                     });
                 }
@@ -1984,6 +2666,16 @@
             const genderInputs = document.querySelectorAll('input[name="genderSelect"]');
             genderInputs.forEach(input => {
                 input.addEventListener('change', function() {
+                    genderInputs.forEach(radio => {
+                        if (radio.closest('.option')) {
+                            radio.closest('.option').classList.remove('selected');
+                        }
+                    });
+                    
+                    if (this.checked && this.closest('.option')) {
+                        this.closest('.option').classList.add('selected');
+                    }
+                    
                     const hiddenGender = document.getElementById('gender');
                     if (hiddenGender) hiddenGender.value = this.value;
                 });
@@ -2216,12 +2908,9 @@
 
         function autoDetectKeypoints() {
             keypointDefinitions.forEach(kp => {
-                const randomOffsetX = (Math.random() - 0.5) * 0.05;
-                const randomOffsetY = (Math.random() - 0.5) * 0.03;
-                
                 keypoints[kp.id] = {
-                    x: (kp.x + randomOffsetX) * canvas.width,
-                    y: (kp.y + randomOffsetY) * canvas.height,
+                    x: kp.x * canvas.width,
+                    y: kp.y * canvas.height,
                     label: kp.label,
                     color: kp.color
                 };
@@ -2346,17 +3035,17 @@
                         }
                     }
                     
-                    ctx.shadowColor = point.color;
+                    ctx.shadowColor = isActive ? '#7ac19a' : point.color;
                     ctx.shadowBlur = isActive ? 30 : 18;
                     ctx.beginPath();
                     ctx.arc(point.x, point.y, radius + 10, 0, Math.PI * 2);
-                    ctx.fillStyle = point.color + '35';
+                    ctx.fillStyle = isActive ? 'rgba(122, 193, 154, 0.35)' : point.color + '35';
                     ctx.fill();
                     
                     ctx.shadowBlur = 15;
                     ctx.beginPath();
                     ctx.arc(point.x, point.y, radius + 5, 0, Math.PI * 2);
-                    ctx.fillStyle = point.color + '50';
+                    ctx.fillStyle = isActive ? 'rgba(122, 193, 154, 0.5)' : point.color + '50';
                     ctx.fill();
                     
                     ctx.shadowBlur = 10;
@@ -2389,13 +3078,13 @@
                     ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
                     ctx.fill();
 
-                    ctx.font = `bold ${isMobile ? 13 : 14}px "Segoe UI", Arial, sans-serif`;
+                    ctx.font = `bold ${isMobile ? 12 : 14}px "Segoe UI", Arial, sans-serif`;
                     const textWidth = ctx.measureText(point.label).width;
-                    const padding = isMobile ? 10 : 12;
+                    const padding = isMobile ? 8 : 12;
                     const labelWidth = textWidth + padding * 2;
-                    const labelHeight = isMobile ? 28 : 30;
+                    const labelHeight = isMobile ? 26 : 30;
                     
-                    const labelX = id.includes('left') ? point.x - labelWidth - (isMobile ? 30 : 22) : point.x + (isMobile ? 30 : 22);
+                    const labelX = id.includes('left') ? point.x - labelWidth - (isMobile ? 28 : 22) : point.x + (isMobile ? 28 : 22);
                     const labelY = point.y - labelHeight / 2;
                     
                     ctx.shadowColor = 'rgba(95, 132, 111, 0.4)';
@@ -2841,7 +3530,7 @@
             );
             
             if (isDuplicate) {
-                alert('此時段已經存在！請選擇不同的日期或時間');
+                alert('⚠️ 此時段已經存在！\n\n您已經選擇過這個日期和時間，請選擇不同的時段。');
                 return;
             }
             
@@ -2882,78 +3571,70 @@
 
         function loadVenueRules() {
             const rulesHTML = `
-                <div style="color: #5f846f; line-height: 1.8;">
-                    <div style="margin-bottom: 30px;">
-                        <h3 style="color: #5f846f; font-size: 18px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #7ac19a;">場館規範</h3>
-                        <p style="margin-bottom: 20px; color: #66888e;">為提供穩定及高品質的課程體驗,敬請上課學員配合以下規範</p>
+                <div style="color: #5f846f; line-height: 1.6; font-size: 15px;">
+                    <div style="margin-bottom: 24px;">
+                        <h3 style="color: #5f846f; font-size: 18px; font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #7ac19a;">場館規範</h3>
+                        <p style="margin-bottom: 18px; color: #66888e; font-size: 14px;">為提供穩定及高品質的課程體驗，敬請上課學員配合以下規範</p>
 
-                        <div style="background: #fcf4e3; margin-bottom: 15px; padding: 15px; border-radius: 10px; border-left: 4px solid #ffe08b;">
-                            <strong style="color: #ba9e60;">1.</strong> 採全預約制,預約依照系統為準,不做口頭保留
-                        </div>
-
-                        <div style="background: #fcf4e3; margin-bottom: 15px; padding: 15px; border-radius: 10px; border-left: 4px solid #ffe08b;">
-                            <strong style="color: #ba9e60;">2.</strong> 為維護三方權益,到場上課務必進行紙本及電子簽到
-                        </div>
-
-                        <div style="background: #fcf4e3; margin-bottom: 15px; padding: 15px; border-radius: 10px; border-left: 4px solid #ffe08b;">
-                            <strong style="color: #ba9e60;">3.</strong> 除飲用水外,私人物品請寄放於置物櫃,請勿擺放其他地方
-                        </div>
-
-                        <div style="background: #fcf4e3; margin-bottom: 15px; padding: 15px; border-radius: 10px; border-left: 4px solid #ffe08b;">
-                            <strong style="color: #ba9e60;">4.</strong> 運動/伸展/等待區域禁止用餐
-                        </div>
-
-                        <div style="background: #fcf4e3; margin-bottom: 15px; padding: 15px; border-radius: 10px; border-left: 4px solid #ffe08b;">
-                            <strong style="color: #ba9e60;">5.</strong> 服裝規範:全館須脫鞋、須著運動服裝
-                            <div style="margin-top: 10px; padding-left: 15px;">
-                                <ul style="color: #66888e;">
-                                    <li style="margin-bottom: 8px;">皮拉提斯課程須著止滑襪,建議著瑜珈服飾、綁髮上課</li>
-                                    <li style="margin-bottom: 8px;">重訓健身課程可自備室內運動鞋</li>
-                                </ul>
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 18px;">
+                            <div style="background: #fcf4e3; padding: 14px; border-radius: 10px; border-left: 4px solid #ffe08b; font-size: 15px;">
+                                <strong style="color: #ba9e60;">1.</strong> 採全預約制，預約依照系統為準，不做口頭保留
                             </div>
-                        </div>
-
-                        <div style="background: #fcf4e3; margin-bottom: 15px; padding: 15px; border-radius: 10px; border-left: 4px solid #ffe08b;">
-                            <strong style="color: #ba9e60;">6.</strong> 正課學員若攜陪同者,陪同者不得滯留超過15分鐘,特殊情況另議
+                            <div style="background: #fcf4e3; padding: 14px; border-radius: 10px; border-left: 4px solid #ffe08b; font-size: 15px;">
+                                <strong style="color: #ba9e60;">2.</strong> 為維護三方權益，到場上課務必進行紙本及電子簽到
+                            </div>
+                            <div style="background: #fcf4e3; padding: 14px; border-radius: 10px; border-left: 4px solid #ffe08b; font-size: 15px;">
+                                <strong style="color: #ba9e60;">3.</strong> 除飲用水外，私人物品請寄放於置物櫃，請勿擺放其他地方
+                            </div>
+                            <div style="background: #fcf4e3; padding: 14px; border-radius: 10px; border-left: 4px solid #ffe08b; font-size: 15px;">
+                                <strong style="color: #ba9e60;">4.</strong> 運動/伸展/等待區域禁止用餐
+                            </div>
+                            <div style="background: #fcf4e3; padding: 14px; border-radius: 10px; border-left: 4px solid #ffe08b; font-size: 15px;">
+                                <strong style="color: #ba9e60;">5.</strong> 服裝規範：全館須脫鞋、須著運動服裝
+                                <div style="margin-top: 8px; padding-left: 12px; font-size: 14px; color: #66888e;">
+                                    • 皮拉提斯課程須著止滑襪，建議著瑜珈服飾、綁髮上課<br>
+                                    • 重訓健身課程可自備室內運動鞋
+                                </div>
+                            </div>
+                            <div style="background: #fcf4e3; padding: 14px; border-radius: 10px; border-left: 4px solid #ffe08b; font-size: 15px;">
+                                <strong style="color: #ba9e60;">6.</strong> 正課學員若攜陪同者，陪同者不得滯留超過15分鐘，特殊情況另議
+                            </div>
                         </div>
                     </div>
 
-                    <div style="background: linear-gradient(135deg, #66888e 0%, #5f846f 100%); color: #ffffff; padding: 20px; border-radius: 15px; margin: 20px 0; text-align: center; font-weight: bold;">
-                        為維護他人上課品質及權益,場館有權拒絕未遵守規範者進入<br>
+                    <div style="background: linear-gradient(135deg, #66888e 0%, #5f846f 100%); color: #ffffff; padding: 18px; border-radius: 12px; margin: 18px 0; text-align: center; font-weight: 600; font-size: 14px;">
+                        為維護他人上課品質及權益，場館有權拒絕未遵守規範者進入<br>
                         ※衡點健康保留最終解釋權
                     </div>
 
-                    <div style="background: #faece8; padding: 20px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #f2ac98;">
-                        <h3 style="color: #c67566; font-size: 18px; margin-bottom: 15px;">取消及請假政策</h3>
+                    <div style="background: #faece8; padding: 18px; border-radius: 12px; margin-bottom: 24px; border: 2px solid #f2ac98;">
+                        <h3 style="color: #c67566; font-size: 17px; font-weight: 700; margin-bottom: 14px;">取消及請假政策</h3>
                         
-                        <div style="background: #ffffff; padding: 12px; margin-bottom: 10px; border-radius: 8px; border-left: 3px solid #f2ac98;">
-                            <strong>一般「取消預約」政策:</strong><br>
-                            預約日的<span style="color: #ba9e60; font-weight: bold;">前一天晚上8點前</span>提出取消
-                        </div>
-
-                        <div style="background: #ffffff; padding: 12px; margin-bottom: 10px; border-radius: 8px; border-left: 3px solid #f2ac98;">
-                            <strong>臨時「請假」政策:</strong><br>
-                            課程<span style="color: #ba9e60; font-weight: bold;">前3小時</span>提出請假 (補課須購買補課卡)<br>
-                            <strong style="color: #c67566;">補課卡:300元</strong>
-                        </div>
-
-                        <div style="background: #ffffff; padding: 12px; margin-bottom: 10px; border-radius: 8px; border-left: 3px solid #f2ac98;">
-                            <strong style="color: #c67566;">重要提醒:</strong><br>
-                            無遵守規則皆視同「曠課」曠課無法進行補課<br>
-                            ※為維護三方權益請遵守以上規則
-                        </div>
-
-                        <div style="background: #ffffff; padding: 12px; margin-bottom: 10px; border-radius: 8px; border-left: 3px solid #f2ac98;">
-                            <strong>病假規定:</strong><br>
-                            病假不在此限,須主動於課程開始前「盡早」提出<br>
-                            避免造成雙方困擾,並於請假課程兩日內提交<br>
-                            醫療證明文件
+                        <div style="display: grid; gap: 10px;">
+                            <div style="background: #ffffff; padding: 12px; border-radius: 8px; border-left: 3px solid #f2ac98; font-size: 14px;">
+                                <strong>一般「取消預約」政策：</strong><br>
+                                預約日的<span style="color: #ba9e60; font-weight: bold;">前一天晚上8點前</span>提出取消
+                            </div>
+                            <div style="background: #ffffff; padding: 12px; border-radius: 8px; border-left: 3px solid #f2ac98; font-size: 14px;">
+                                <strong>臨時「請假」政策：</strong><br>
+                                課程<span style="color: #ba9e60; font-weight: bold;">前3小時</span>提出請假 (補課須購買補課卡)<br>
+                                <strong style="color: #c67566;">補課卡：300元</strong>
+                            </div>
+                            <div style="background: #ffffff; padding: 12px; border-radius: 8px; border-left: 3px solid #f2ac98; font-size: 14px;">
+                                <strong style="color: #c67566;">重要提醒：</strong><br>
+                                無遵守規則皆視同「曠課」曠課無法進行補課<br>
+                                ※為維護三方權益請遵守以上規則
+                            </div>
+                            <div style="background: #ffffff; padding: 12px; border-radius: 8px; border-left: 3px solid #f2ac98; font-size: 14px;">
+                                <strong>病假規定：</strong><br>
+                                病假不在此限，須主動於課程開始前「盡早」提出，避免造成雙方困擾，並於請假課程兩日內提交醫療證明文件
+                            </div>
                         </div>
                     </div>
 
-                    <div style="background: #daedec; padding: 15px; border-radius: 10px; text-align: center; color: #66888e;">
-                        <div style="margin-bottom: 8px;">如有疑問請洽 OXEN FITNESS 官方LINE</div>
-                        <div>衡點健康 © 2018</div>
+                    <div style="background: #daedec; padding: 14px; border-radius: 10px; text-align: center; color: #66888e; font-size: 13px;">
+                        如有疑問請洽 OXEN FITNESS 官方LINE<br>
+                        <span style="font-size: 12px;">衡點健康 © 2018</span>
                     </div>
                 </div>
             `;
@@ -2971,7 +3652,7 @@
                     agreeCheckbox.disabled = false;
                     agreeLabel.style.cursor = 'pointer';
                     agreeLabel.style.opacity = '1';
-                    agreeLabel.style.background = '#fcf4e3';
+                    agreeLabel.style.background = 'linear-gradient(135deg, #fcf4e3 0%, #daedec 100%)';
                 }
             });
         }
@@ -3045,7 +3726,6 @@
                         return;
                     }
                     
-                    // 收集所有疾病選項
                     const diseaseCheckboxes = document.querySelectorAll('#edit_diseases_container input[type="checkbox"]');
                     const selectedDiseases = [];
                     diseaseCheckboxes.forEach(cb => {
@@ -3054,7 +3734,6 @@
                         }
                     });
                     
-                    // 檢查是否有選擇需要詳情的疾病
                     const jointDetail = document.getElementById('edit_joint_detail').value.trim();
                     const spineDetail = document.getElementById('edit_spine_detail').value.trim();
                     const otherDetail = document.getElementById('edit_other_detail').value.trim();
@@ -3084,7 +3763,6 @@
                     formData.goals = selectedGoals;
                     formData.courses = selectedCourses;
                     
-                    // 處理疾病資料，包含詳情
                     formData.diseases = [];
                     selectedDiseases.forEach(disease => {
                         if (disease === '關節問題' && jointDetail) {
@@ -3126,7 +3804,6 @@
             const selectedCourses = Array.from(courseSelect.selectedOptions).map(opt => opt.value);
             document.getElementById('edit_course_display').textContent = selectedCourses.length > 0 ? selectedCourses.join('、') : '未填寫';
             
-            // 收集所有疾病
             const diseaseCheckboxes = document.querySelectorAll('#edit_diseases_container input[type="checkbox"]');
             const selectedDiseasesDisplay = [];
             diseaseCheckboxes.forEach(cb => {
@@ -3198,6 +3875,7 @@
             }
             
             saveCurrentPageData();
+            saveFormDataToStorage();
             
             if (currentPage === 10) {
                 displayReviewData();
@@ -3248,6 +3926,7 @@
                     const goalChecked = document.querySelectorAll('input[name="goal"]:checked').length > 0;
                     if (!goalChecked) {
                         document.getElementById('goalError').style.display = 'block';
+                        alert('⚠️ 請至少選擇一項健身目標');
                         return false;
                     }
                     break;
@@ -3256,6 +3935,7 @@
                     const courseChecked = document.querySelectorAll('input[name="course"]:checked').length > 0;
                     if (!courseChecked) {
                         document.getElementById('courseError').style.display = 'block';
+                        alert('⚠️ 請至少選擇一項課程類型');
                         return false;
                     }
                     break;
@@ -3264,6 +3944,7 @@
                     const diseaseChecked = document.querySelectorAll('input[name="disease"]:checked').length > 0;
                     if (!diseaseChecked) {
                         document.getElementById('diseaseError').style.display = 'block';
+                        alert('⚠️ 請至少選擇一項疾病史選項（若無請選擇「無」）');
                         return false;
                     }
                     
@@ -3274,7 +3955,8 @@
                     if (jointIssueChecked) {
                         const detail = document.getElementById('jointDetail').value.trim();
                         if (!detail) {
-                            alert('請說明關節問題詳情');
+                            alert('⚠️ 您選擇了「關節問題」，請在下方欄位說明詳情');
+                            document.getElementById('jointDetail').focus();
                             return false;
                         }
                     }
@@ -3282,7 +3964,8 @@
                     if (spineIssueChecked) {
                         const detail = document.getElementById('spineDetail').value.trim();
                         if (!detail) {
-                            alert('請說明脊椎問題詳情');
+                            alert('⚠️ 您選擇了「脊椎問題」，請在下方欄位說明詳情');
+                            document.getElementById('spineDetail').focus();
                             return false;
                         }
                     }
@@ -3290,9 +3973,18 @@
                     if (otherDiseaseChecked) {
                         const detail = document.getElementById('otherDetail').value.trim();
                         if (!detail) {
-                            alert('請說明其他疾病');
+                            alert('⚠️ 您選擇了「其他」，請在下方欄位說明詳情');
+                            document.getElementById('otherDetail').focus();
                             return false;
                         }
+                    }
+                    break;
+                    
+                case 6:
+                    const agreePrivacy = document.getElementById('agreePrivacy').checked;
+                    if (!agreePrivacy) {
+                        alert('⚠️ 請勾選同意個人資料使用條款');
+                        return false;
                     }
                     break;
                     
@@ -3310,18 +4002,25 @@
                     if (!name) {
                         errorDiv.textContent = '請輸入姓名';
                         errorDiv.style.display = 'block';
+                        alert('⚠️ 請輸入您的姓名');
+                        document.getElementById('name').focus();
                         return false;
                     }
                     
                     if (!gender) {
                         errorDiv.textContent = '請選擇性別';
                         errorDiv.style.display = 'block';
+                        alert('⚠️ 請選擇您的性別');
                         return false;
                     }
                     
                     if (!year || !month || !day) {
                         errorDiv.textContent = '請選擇完整的生日（年、月、日）';
                         errorDiv.style.display = 'block';
+                        alert('⚠️ 請選擇完整的生日（年、月、日）');
+                        if (!year) document.getElementById('birthdayYear').focus();
+                        else if (!month) document.getElementById('birthdayMonth').focus();
+                        else document.getElementById('birthdayDay').focus();
                         return false;
                     }
                     
@@ -3329,12 +4028,16 @@
                     if (!email || !emailPattern.test(email)) {
                         errorDiv.textContent = '請輸入有效的電子信箱';
                         errorDiv.style.display = 'block';
+                        alert('⚠️ 請輸入有效的電子信箱格式\n例如: example@gmail.com');
+                        document.getElementById('email').focus();
                         return false;
                     }
                     
                     if (phone.length !== 10 || !phone.startsWith('09')) {
                         errorDiv.textContent = '請輸入正確的手機號碼(09開頭的10碼)';
                         errorDiv.style.display = 'block';
+                        alert('⚠️ 請輸入正確的手機號碼\n格式：09開頭的10碼數字');
+                        document.getElementById('phone').focus();
                         return false;
                     }
                     break;
@@ -3354,6 +4057,8 @@
                         if (!time) {
                             timeSlotErrorDiv.textContent = '請填寫「平日白天」的時段';
                             timeSlotErrorDiv.style.display = 'block';
+                            alert('⚠️ 您選擇了「平日白天」，請填寫時段\n例如：09:00-17:00');
+                            document.getElementById('weekdayDayTime').focus();
                             return false;
                         }
                     }
@@ -3363,6 +4068,8 @@
                         if (!time) {
                             timeSlotErrorDiv.textContent = '請填寫「平日晚上」的時段';
                             timeSlotErrorDiv.style.display = 'block';
+                            alert('⚠️ 您選擇了「平日晚上」，請填寫時段\n例如：18:00-21:00');
+                            document.getElementById('weekdayNightTime').focus();
                             return false;
                         }
                     }
@@ -3372,6 +4079,8 @@
                         if (!time) {
                             timeSlotErrorDiv.textContent = '請填寫「假日白天」的時段';
                             timeSlotErrorDiv.style.display = 'block';
+                            alert('⚠️ 您選擇了「假日白天」，請填寫時段\n例如：09:00-17:00');
+                            document.getElementById('weekendDayTime').focus();
                             return false;
                         }
                     }
@@ -3381,6 +4090,8 @@
                         if (!time) {
                             timeSlotErrorDiv.textContent = '請填寫「假日晚上」的時段';
                             timeSlotErrorDiv.style.display = 'block';
+                            alert('⚠️ 您選擇了「假日晚上」，請填寫時段\n例如：18:00-21:00');
+                            document.getElementById('weekendNightTime').focus();
                             return false;
                         }
                     }
@@ -3389,6 +4100,7 @@
                 case 10:
                     if (timeSlots.length < 3) {
                         document.getElementById('timeSlotError').style.display = 'block';
+                        alert('⚠️ 請至少新增三個理想的體驗時段\n\n目前已新增：' + timeSlots.length + ' 個\n還需要：' + (3 - timeSlots.length) + ' 個');
                         return false;
                     }
                     break;
@@ -3396,6 +4108,7 @@
                 case 12:
                     if (!document.getElementById('agreeRules').checked) {
                         document.getElementById('rulesError').style.display = 'block';
+                        alert('⚠️ 請勾選同意場館規範\n\n提醒：請先將規範內容捲動到最底部，才能勾選同意');
                         return false;
                     }
                     break;
@@ -3523,24 +4236,20 @@
                 option.selected = (formData.courses || []).includes(option.value);
             });
             
-            // 處理疾病史複選框
             const jointDetailInput = document.getElementById('edit_joint_detail');
             const spineDetailInput = document.getElementById('edit_spine_detail');
             const otherDetailInput = document.getElementById('edit_other_detail');
             
-            // 清空詳情欄位
             jointDetailInput.value = '';
             spineDetailInput.value = '';
             otherDetailInput.value = '';
             
-            // 清除所有疾病複選框
             const diseaseCheckboxes = document.querySelectorAll('#edit_diseases_container input[type="checkbox"]');
             diseaseCheckboxes.forEach(cb => {
                 cb.checked = false;
                 cb.parentElement.classList.remove('selected');
             });
             
-            // 根據 formData 設置複選框狀態
             (formData.diseases || []).forEach(disease => {
                 if (disease.includes(':')) {
                     const parts = disease.split(':');
@@ -3570,7 +4279,6 @@
                         }
                     }
                 } else {
-                    // 一般疾病（無詳情）
                     diseaseCheckboxes.forEach(cb => {
                         if (cb.value === disease) {
                             cb.checked = true;
@@ -3646,7 +4354,6 @@
             const courseSelect = document.getElementById('edit_course');
             formData.courses = Array.from(courseSelect.selectedOptions).map(opt => opt.value);
             
-            // 收集疾病史資料
             const diseaseCheckboxes = document.querySelectorAll('#edit_diseases_container input[type="checkbox"]');
             formData.diseases = [];
             
@@ -3702,36 +4409,21 @@
             
             saveCurrentPageData();
             
-            const diseasesFormatted = (formData.diseases || []).map((disease) => {
-                if (disease.includes(':')) {
-                    const parts = disease.split(':');
-                    return {
-                        disease: parts[0].trim(),
-                        detail: parts[1].trim()
-                    };
-                } else {
-                    return {
-                        disease: disease,
-                        detail: ''
-                    };
-                }
-            });
-            
             const submitData = {
+                lineId: formData.lineId || '',
                 name: formData.name || '',
                 gender: formData.gender || '',
                 birthday: formData.birthday || '',
                 email: formData.email || '',
                 phone: formData.phone || '',
                 
-                goals: formData.goals || [],
-                courses: formData.courses || [],
-                diseases: formData.diseases || [],
-                diseasesDetailed: diseasesFormatted,
+                goals: (formData.goals || []).join('、'),
+                courses: (formData.courses || []).join('、'),
+                diseases: (formData.diseases || []).join('、'),
                 remarks: formData.remarks || '',
                 
-                timePreferences: formData.timePreferences || [],
-                experienceSlots: formData.experienceSlots || [],
+                timePreferences: (formData.timePreferences || []).map(tp => `${tp.slot}: ${tp.time || '全時段'}`).join(' | '),
+                experienceSlots: (formData.experienceSlots || []).map(slot => `${slot.date} ${slot.time}`).join(' | '),
                 
                 skippedAI: formData.skippedAI || false,
                 postureScore: formData.postureScore || null,
@@ -3760,6 +4452,7 @@
                 });
                 
                 if (response.ok) {
+                    localStorage.removeItem('fitnessFormData');
                     nextPage();
                 } else {
                     submitButton.disabled = false;
@@ -3791,6 +4484,16 @@
             if (e.target.type === 'checkbox' || e.target.type === 'radio') {
                 const option = e.target.closest('.option');
                 if (option) {
+                    if (e.target.type === 'radio') {
+                        const radioName = e.target.name;
+                        document.querySelectorAll(`input[name="${radioName}"]`).forEach(radio => {
+                            const parentOption = radio.closest('.option');
+                            if (parentOption) {
+                                parentOption.classList.remove('selected');
+                            }
+                        });
+                    }
+                    
                     if (e.target.checked) {
                         option.classList.add('selected');
                     } else {
