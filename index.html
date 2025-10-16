@@ -2279,6 +2279,12 @@
     <!-- 載入 LINE LIFF SDK -->
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
+        // ==================== 設定區 ====================
+        // 請在這裡填入您的 LIFF ID 和 Webhook URL
+        const LIFF_ID = "2008291855-rl92dZEP"; // ← 您的 LIFF ID
+        const WEBHOOK_URL = "https://hook.us2.make.com/6rfz9vsjnqqxr6s6bnx2cr9njax93yyg"; // ← 您的 Make.com Webhook
+        // ===============================================
+
         let currentPage = 1;
         const totalPages = 13;
         let formData = {};
@@ -2308,7 +2314,7 @@
         async function initializeLiff() {
             try {
                 // 1️⃣ 初始化 LIFF（請替換為實際的 LIFF ID）
-                await liff.init({ liffId: "2008291855-rl92dZEP" });
+                await liff.init({ liffId: "你的_LIFF_ID" });
                 
                 // 2️⃣ 若未登入則引導登入
                 if (!liff.isLoggedIn()) {
@@ -4482,9 +4488,10 @@
             
             console.log('📤 準備送出資料:', submitData);
             console.log('👤 LINE User ID:', submitData.lineId);
+            console.log('🌐 Webhook URL:', WEBHOOK_URL);
             
             try {
-                const response = await fetch(webhookUrl, {
+                const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -4492,13 +4499,17 @@
                     body: JSON.stringify(submitData)
                 });
                 
+                console.log('📡 HTTP 回應狀態:', response.status);
+                
                 if (response.ok) {
                     console.log('✅ 表單送出成功！');
                     console.log('✅ 已送出 LINE User ID:', submitData.lineId);
                     localStorage.removeItem('fitnessFormData');
                     nextPage();
                 } else {
+                    const errorText = await response.text();
                     console.error('❌ 送出失敗，HTTP 狀態:', response.status);
+                    console.error('❌ 錯誤訊息:', errorText);
                     submitButton.disabled = false;
                     submitButton.innerHTML = originalText;
                     submitButton.style.background = '';
@@ -4507,6 +4518,7 @@
                 }
             } catch (error) {
                 console.error('❌ 送出錯誤:', error);
+                console.error('❌ 錯誤詳情:', error.message);
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalText;
                 submitButton.style.background = '';
