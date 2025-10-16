@@ -16,9 +16,6 @@
             background: linear-gradient(135deg, #e2ede6 0%, #daedec 100%);
             min-height: 100vh;
             padding: 15px;
-            overflow-x: hidden;
-            touch-action: pan-y;
-            -webkit-tap-highlight-color: transparent;
         }
 
         .container {
@@ -32,33 +29,14 @@
 
         .progress-bar {
             height: 14px;
-            background: 
-                radial-gradient(ellipse at top, rgba(255, 255, 255, 0.6) 0%, transparent 70%),
-                linear-gradient(135deg, 
-                    #f8fcfa 0%, 
-                    #f2f9f6 15%,
-                    #ecf7f2 30%,
-                    #e8f5f1 45%, 
-                    #e2ede6 60%, 
-                    #d8e9de 75%,
-                    #d0e5d9 90%,
-                    #cce3d8 100%);
+            background: #e2ede6;
             position: relative;
-            overflow: visible;
-            border-radius: 25px;
-            padding: 3px;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(135deg, 
-                #2d7a4d 0%,
-                #4a9d6f 25%,
-                #7ac19a 50%,
-                #a5d8c5 75%,
-                #d0ecee 100%);
-            transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-            border-radius: 22px;
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            transition: width 0.9s ease;
             box-shadow: 0 0 30px rgba(122, 193, 154, 0.6);
         }
 
@@ -84,15 +62,12 @@
             color: #5f846f;
             font-size: 22px;
             margin-bottom: 10px;
-            word-wrap: break-word;
-            line-height: 1.4;
         }
 
         .subtitle {
             color: #808080;
             font-size: 14px;
             margin-bottom: 25px;
-            line-height: 1.5;
         }
 
         .option-group {
@@ -117,7 +92,6 @@
         .option:hover {
             background: #ffeaea;
             border-color: #ffd5d5;
-            transform: translateX(3px);
         }
 
         .option.selected {
@@ -133,24 +107,7 @@
             width: 22px;
             height: 22px;
             cursor: pointer;
-            flex-shrink: 0;
             accent-color: #5f846f;
-        }
-
-        .text-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e2ede6;
-            border-radius: 8px;
-            font-size: 16px;
-            margin-top: 10px;
-            transition: border-color 0.2s;
-        }
-
-        .text-input:focus {
-            outline: none;
-            border-color: #7ac19a;
-            box-shadow: 0 0 0 3px rgba(122, 193, 154, 0.1);
         }
 
         .button {
@@ -221,13 +178,6 @@
             justify-content: center;
             margin: 0 auto 30px;
             box-shadow: 0 10px 30px rgba(122, 193, 154, 0.3);
-            animation: success-pop 0.6s ease-out;
-        }
-
-        @keyframes success-pop {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); opacity: 1; }
         }
 
         .completion-icon {
@@ -252,11 +202,12 @@
         .debug-info {
             background: #fcf4e3;
             border: 2px solid #ffe08b;
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 15px;
-            margin-bottom: 20px;
+            margin: 20px 0;
             font-size: 13px;
             color: #5f846f;
+            text-align: left;
         }
 
         .debug-info strong {
@@ -273,14 +224,16 @@
         <div class="content">
             <!-- Q1: 健身目標 -->
             <div class="question-page active" data-page="1">
-                <!-- 除錯資訊 -->
-                <div class="debug-info" id="debugInfo">
-                    <strong>🔍 LIFF 狀態：</strong><span id="liffStatus">正在初始化...</span><br>
-                    <strong>👤 User ID：</strong><span id="displayUserId">取得中...</span>
-                </div>
-
                 <h2>您的健身目標是什麼?<span class="required">*必填</span></h2>
                 <p class="subtitle">可複選多個目標</p>
+                
+                <!-- 除錯資訊 -->
+                <div class="debug-info" id="debugInfo">
+                    <strong>🔍 除錯資訊:</strong><br>
+                    LIFF 狀態: <span id="liffStatus">初始化中...</span><br>
+                    LINE User ID: <span id="displayUserId">等待獲取...</span>
+                </div>
+
                 <div class="option-group">
                     <label class="option">
                         <input type="checkbox" name="goal" value="減脂">
@@ -294,13 +247,50 @@
                         <input type="checkbox" name="goal" value="改善體態">
                         <span>改善體態</span>
                     </label>
+                    <label class="option">
+                        <input type="checkbox" name="goal" value="改善疼痛/調整姿勢">
+                        <span>改善疼痛 / 調整姿勢</span>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="goal" value="術後/產後恢復">
+                        <span>術後 / 產後恢復</span>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="goal" value="日常健康維持">
+                        <span>日常健康維持</span>
+                    </label>
                 </div>
                 <div id="goalError" class="error-message" style="display: none;">請至少選擇一項健身目標</div>
                 <button class="button" onclick="nextPage()">下一步</button>
             </div>
 
-            <!-- 完成頁面 -->
+            <!-- Q2: 課程偏好 -->
             <div class="question-page" data-page="2">
+                <h2>您偏好的課程類型?<span class="required">*必填</span></h2>
+                <p class="subtitle">可複選多個課程</p>
+                <div class="option-group">
+                    <label class="option">
+                        <input type="checkbox" name="course" value="重量訓練">
+                        <span>重量訓練</span>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="course" value="器械皮拉提斯">
+                        <span>器械皮拉提斯</span>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="course" value="伸展課程">
+                        <span>伸展課程</span>
+                    </label>
+                </div>
+                <div id="courseError" class="error-message" style="display: none;">請至少選擇一項課程類型</div>
+                <div class="nav-buttons">
+                    <button class="button secondary" onclick="prevPage()">上一步</button>
+                    <button class="button" onclick="nextPage()">下一步</button>
+                </div>
+            </div>
+
+            <!-- 完成頁面 -->
+            <div class="question-page" data-page="3">
                 <div class="completion-modern">
                     <div class="completion-icon-bg">
                         <div class="completion-icon">✓</div>
@@ -309,15 +299,16 @@
                     <p class="completion-subtitle">感謝您完成問卷填寫<br>我們已收到您的資料</p>
                     
                     <div class="debug-info">
-                        <strong>📤 已送出的 LINE User ID：</strong><br>
-                        <span id="submittedUserId" style="word-break: break-all;"></span>
+                        <strong>📋 已提交的資料:</strong><br>
+                        LINE User ID: <span id="submittedUserId"></span><br>
+                        健身目標: <span id="submittedGoals"></span><br>
+                        課程偏好: <span id="submittedCourses"></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 隱藏欄位 -->
     <input type="hidden" id="lineId" value="">
 
     <!-- LIFF SDK -->
@@ -325,31 +316,31 @@
     
     <script>
         let currentPage = 1;
-        const totalPages = 2;
-        let formData = {
-            lineId: '',
-            goals: []
-        };
+        const totalPages = 3;
+        let formData = {};
 
-        // ⭐ LIFF 初始化函數 - 修正版
+        // ===== LIFF 初始化 =====
         async function initializeLiff() {
-            const liffId = "2008291855-rl92dZEP"; // ← 請替換成你的實際 LIFF ID (格式: 2006588516-xxxxxxxx)
+            const liffId = "2006588516-xxxxxxxx"; // ← 請替換為你的實際 LIFF ID
             
             try {
-                // 更新狀態
-                document.getElementById('liffStatus').textContent = '正在連接 LINE...';
+                updateDebugInfo('正在初始化 LIFF...');
                 
                 // 初始化 LIFF
                 await liff.init({ liffId: liffId });
                 
-                // 檢查登入狀態
+                updateDebugInfo('LIFF 初始化成功');
+                
+                // 檢查是否已登入
                 if (!liff.isLoggedIn()) {
-                    document.getElementById('liffStatus').textContent = '需要登入';
+                    updateDebugInfo('未登入,正在導向登入頁面...');
                     liff.login();
                     return;
                 }
                 
-                // ✅ 使用 getDecodedIDToken() 獲取 User ID
+                updateDebugInfo('已登入,正在獲取 User ID...');
+                
+                // 獲取 User ID
                 const idToken = liff.getDecodedIDToken();
                 const userId = idToken.sub;
                 
@@ -357,36 +348,87 @@
                 document.getElementById('lineId').value = userId;
                 formData.lineId = userId;
                 
-                // 更新畫面顯示
-                document.getElementById('liffStatus').textContent = '✅ 已連接';
+                // 更新除錯顯示
                 document.getElementById('displayUserId').textContent = userId;
+                updateDebugInfo('✅ 成功獲取 User ID');
                 
-                console.log('✅ LINE User ID 已取得:', userId);
+                console.log('✅ LINE User ID:', userId);
                 
             } catch (error) {
-                console.error('❌ LIFF 初始化錯誤:', error);
-                document.getElementById('liffStatus').textContent = '❌ 連接失敗: ' + error.message;
-                document.getElementById('displayUserId').textContent = '無法取得';
+                console.error('❌ LIFF 錯誤:', error);
+                updateDebugInfo('❌ LIFF 錯誤: ' + error.message);
                 
-                // Fallback: 嘗試從 URL 取得
-                const urlParams = new URLSearchParams(window.location.search);
-                const urlUserId = urlParams.get('LINEID') || urlParams.get('userId');
-                if (urlUserId) {
-                    document.getElementById('lineId').value = urlUserId;
-                    formData.lineId = urlUserId;
-                    document.getElementById('displayUserId').textContent = urlUserId + ' (從URL)';
-                }
+                // Fallback: 從 URL 獲取
+                getLineIdFromUrl();
             }
         }
 
-        // 頁面載入時初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeLiff();
-            updateProgress();
-        });
+        function updateDebugInfo(message) {
+            const statusEl = document.getElementById('liffStatus');
+            if (statusEl) {
+                statusEl.textContent = message;
+            }
+        }
 
-        // 驗證當前頁面
+        function getLineIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lineId = urlParams.get('LINEID') || urlParams.get('lineId') || '';
+            if (lineId) {
+                document.getElementById('lineId').value = lineId;
+                formData.lineId = lineId;
+                document.getElementById('displayUserId').textContent = lineId;
+                updateDebugInfo('從 URL 獲取 User ID');
+            } else {
+                updateDebugInfo('⚠️ 無法獲取 User ID');
+            }
+        }
+
+        // ===== 頁面導航 =====
+        function nextPage() {
+            if (!validateCurrentPage()) {
+                return;
+            }
+            
+            saveCurrentPageData();
+            
+            if (currentPage === 2) {
+                // 最後一頁,提交表單
+                submitForm();
+                return;
+            }
+            
+            currentPage++;
+            showPage(currentPage);
+            updateProgress();
+        }
+
+        function prevPage() {
+            currentPage--;
+            showPage(currentPage);
+            updateProgress();
+        }
+
+        function showPage(pageNum) {
+            document.querySelectorAll('.question-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            const targetPage = document.querySelector(`[data-page="${pageNum}"]`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function updateProgress() {
+            const progress = (currentPage / totalPages) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // ===== 表單驗證 =====
         function validateCurrentPage() {
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(el => el.style.display = 'none');
+            
             if (currentPage === 1) {
                 const goalChecked = document.querySelectorAll('input[name="goal"]:checked').length > 0;
                 if (!goalChecked) {
@@ -394,54 +436,39 @@
                     alert('⚠️ 請至少選擇一項健身目標');
                     return false;
                 }
+            } else if (currentPage === 2) {
+                const courseChecked = document.querySelectorAll('input[name="course"]:checked').length > 0;
+                if (!courseChecked) {
+                    document.getElementById('courseError').style.display = 'block';
+                    alert('⚠️ 請至少選擇一項課程類型');
+                    return false;
+                }
             }
+            
             return true;
         }
 
-        // 儲存當前頁面資料
+        // ===== 儲存資料 =====
         function saveCurrentPageData() {
             if (currentPage === 1) {
                 formData.goals = Array.from(document.querySelectorAll('input[name="goal"]:checked'))
                     .map(cb => cb.value);
+            } else if (currentPage === 2) {
+                formData.courses = Array.from(document.querySelectorAll('input[name="course"]:checked'))
+                    .map(cb => cb.value);
             }
         }
 
-        // 下一頁
-        function nextPage() {
-            if (!validateCurrentPage()) return;
-            
-            saveCurrentPageData();
-            
-            // 如果是最後一頁，提交表單
-            if (currentPage === 1) {
-                submitForm();
-                return;
-            }
-            
-            document.querySelectorAll('.question-page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            currentPage++;
-            document.querySelector(`[data-page="${currentPage}"]`).classList.add('active');
-            updateProgress();
-            window.scrollTo(0, 0);
-        }
-
-        // 提交表單
+        // ===== 提交表單 =====
         async function submitForm() {
-            const submitButton = event.target;
-            submitButton.disabled = true;
-            submitButton.textContent = '⏳ 正在送出中...';
-            
-            // 準備送出的資料
             const submitData = {
                 lineId: formData.lineId || '',
-                goals: formData.goals.join('、'),
+                goals: (formData.goals || []).join('、'),
+                courses: (formData.courses || []).join('、'),
                 submittedAt: new Date().toISOString()
             };
             
-            console.log('📤 準備送出資料:', submitData);
+            console.log('📤 準備提交資料:', submitData);
             
             try {
                 const response = await fetch('https://hook.us2.make.com/6rfz9vsjnqqxr6s6bnx2cr9njax93yyg', {
@@ -453,37 +480,28 @@
                 });
                 
                 if (response.ok) {
-                    console.log('✅ 送出成功');
-                    // 顯示已送出的 User ID
-                    document.getElementById('submittedUserId').textContent = submitData.lineId || '(空值)';
+                    console.log('✅ 提交成功');
                     
-                    // 切換到完成頁面
-                    document.querySelectorAll('.question-page').forEach(page => {
-                        page.classList.remove('active');
-                    });
-                    currentPage = 2;
-                    document.querySelector('[data-page="2"]').classList.add('active');
+                    // 顯示完成頁面
+                    currentPage = 3;
+                    showPage(3);
                     updateProgress();
+                    
+                    // 顯示提交的資料
+                    document.getElementById('submittedUserId').textContent = submitData.lineId;
+                    document.getElementById('submittedGoals').textContent = submitData.goals;
+                    document.getElementById('submittedCourses').textContent = submitData.courses;
                 } else {
-                    alert('提交失敗，請稍後再試');
-                    submitButton.disabled = false;
-                    submitButton.textContent = '下一步';
+                    alert('❌ 提交失敗,請稍後再試');
+                    console.error('提交失敗:', response.status);
                 }
             } catch (error) {
-                console.error('❌ 送出錯誤:', error);
-                alert('網路錯誤，請稍後再試');
-                submitButton.disabled = false;
-                submitButton.textContent = '下一步';
+                console.error('❌ 網路錯誤:', error);
+                alert('❌ 網路錯誤,請稍後再試');
             }
         }
 
-        // 更新進度條
-        function updateProgress() {
-            const progress = (currentPage / totalPages) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-        }
-
-        // 選項選擇效果
+        // ===== 選項點擊效果 =====
         document.addEventListener('change', function(e) {
             if (e.target.type === 'checkbox' || e.target.type === 'radio') {
                 const option = e.target.closest('.option');
@@ -505,6 +523,13 @@
                     }
                 }
             }
+        });
+
+        // ===== 頁面載入 =====
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 頁面載入完成');
+            updateProgress();
+            initializeLiff();
         });
     </script>
 </body>
