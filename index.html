@@ -2279,11 +2279,11 @@
     <!-- 載入 LINE LIFF SDK -->
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
-        // ==================== 設定區 ====================
-        // 請在這裡填入您的 LIFF ID 和 Webhook URL
-        const LIFF_ID = "2008291855-rl92dZEP"; // ← 您的 LIFF ID
-        const WEBHOOK_URL = "https://hook.us2.make.com/6rfz9vsjnqqxr6s6bnx2cr9njax93yyg"; // ← 您的 Make.com Webhook
-        // ===============================================
+        // ==================== 🔧 設定區 ====================
+        // ⚠️ 重要：請務必填入您自己的 LIFF ID 和 Webhook URL
+        const LIFF_ID = "2008291855-rl92dZEP"; // ← 改成您的 LIFF ID (格式: 1234567890-abcdefgh)
+        const WEBHOOK_URL = "https://hook.us2.make.com/6rfz9vsjnqqxr6s6bnx2cr9njax93yyg"; // ← 您的 Make.com Webhook URL
+        // ==================================================
 
         let currentPage = 1;
         const totalPages = 13;
@@ -2314,7 +2314,7 @@
         async function initializeLiff() {
             try {
                 // 1️⃣ 初始化 LIFF（請替換為實際的 LIFF ID）
-                await liff.init({ liffId: "你的_LIFF_ID" });
+                await liff.init({ liffId: "2008291855-rl92dZEP" });
                 
                 // 2️⃣ 若未登入則引導登入
                 if (!liff.isLoggedIn()) {
@@ -2560,6 +2560,57 @@
             setupEmailInput();
             setupGenderInput();
         });
+
+        // 初始化 LIFF 並獲取 LINE User ID
+        async function initializeLiff() {
+            try {
+                console.log('🔄 正在初始化 LIFF...');
+                console.log('📌 使用 LIFF ID:', LIFF_ID);
+                
+                // 初始化 LIFF（使用上方設定區的 LIFF_ID 變數）
+                await liff.init({ liffId: LIFF_ID });
+                console.log('✅ LIFF 初始化成功');
+                
+                // 檢查登入狀態，未登入則引導登入
+                if (!liff.isLoggedIn()) {
+                    console.log('⚠️ 用戶未登入，引導登入...');
+                    liff.login();
+                    return;
+                }
+                
+                console.log('✅ 用戶已登入');
+                
+                // 使用 getDecodedIDToken() 獲取 User ID
+                const idToken = liff.getDecodedIDToken();
+                const userId = idToken.sub;
+                
+                console.log('✅ LINE User ID 已取得:', userId);
+                
+                // 將 User ID 寫入隱藏欄位和 formData
+                document.getElementById('lineId').value = userId;
+                formData.lineId = userId;
+                
+                console.log('✅ User ID 已設定完成');
+                
+            } catch (err) {
+                console.error('❌ LIFF 初始化錯誤:', err);
+                console.error('錯誤詳情:', err.message);
+                
+                // 備援：嘗試從 URL 獲取
+                getLineIdFromUrl();
+            }
+        }
+
+        function getLineIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lineId = urlParams.get('LINEID') || urlParams.get('lineId') || urlParams.get('lineid') || urlParams.get('line_id') || '';
+            if (lineId) {
+                document.getElementById('lineId').value = lineId;
+                formData.lineId = lineId;
+                console.log('ℹ️ 從 URL 取得 LINE ID:', lineId);
+            }
+            return lineId;
+        }
 
         function initializeDateInputs() {
             const today = new Date();
